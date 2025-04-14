@@ -1,12 +1,12 @@
 # 📦 Instrucciones para insertar el Chatbot en tu página web
 
-A continuación se muestra el script que puedes usar para integrar el **Chatbot de Pedidos** en **cualquier dominio o sitio web**. Solo necesitas copiar y pegar el siguiente fragmento en tu HTML, idealmente antes del cierre de la etiqueta `<body>`:
+A continuación se muestra el script que puedes usar para integrar el **Chatbot** en **cualquier dominio o sitio web**. Solo necesitas copiar y pegar el siguiente fragmento en tu HTML, idealmente antes del cierre de la etiqueta `<body>`:
 
 ```html
 <script>
 window.dcm_config = {
-  dcm_c_intro_message: "Hola, soy el asistente de Pedidos, ¿en qué puedo ayudarte?",
-  dcm_c_title: "PedidosBot",
+  dcm_c_intro_message: "Hola, soy el asistente de DCM, ¿en qué puedo ayudarte?",
+  dcm_c_title: "BotName",
   dcm_key: "token",
   dcm_c_name: "contextName"
 };
@@ -30,8 +30,8 @@ Los siguientes atributos se configuran dentro del objeto global `window.dcm_conf
 
 | Atributo               | Descripción |
 |------------------------|-------------|
-| `dcm_c_intro_message`  | Mensaje de bienvenida que el chatbot mostrará automáticamente al cargar. Ejemplo: `"Hola, soy el asistente de Pedidos, ¿en qué puedo ayudarte?"` |
-| `dcm_c_title`          | Título del componente del chatbot. Se muestra en la cabecera del widget. Ejemplo: `"PedidosBot"` |
+| `dcm_c_intro_message`  | Mensaje de bienvenida que el chatbot mostrará automáticamente al cargar. Ejemplo: `"Hola, soy el asistente de DCM, ¿en qué puedo ayudarte?"` |
+| `dcm_c_title`          | Título del componente del chatbot. Se muestra en la cabecera del widget. Ejemplo: `"DCM Bot"` |
 | `dcm_key`              | Token de autenticación del contexto. Este valor se debe obtener desde el **Manager de Contextos**. Es único para cada cliente o configuración. |
 | `dcm_c_name`           | Nombre del contexto del chatbot. También se obtiene desde el **Manager de Contextos** y está vinculado al tipo de conocimiento o comportamiento del bot. |
 
@@ -49,8 +49,17 @@ Utiliza internamente una **instancia de Vue 2** para renderizar el widget del ch
 > Este script carga Vue 2 directamente desde CDN si no está presente, lo cual **puede interferir** con otras aplicaciones Vue existentes en la misma página.
 
 **Recomendado para:**
-- Sitios estáticos o simples que **no usan Vue.js**
 - Integraciones donde se desea una mayor personalización visual o integración directa con el DOM
+
+EL chatBot Inline utliza el ID ```#instanceChat```. Por medio de reglas especificas de CSS puedes modificar algunas caracteristicas de estilos. Por ejemplo:
+```html
+<!-- Utiliza marcadores prioritarios agregando body antes de la regla. -->
+<style>
+  body #instanceChat .chat-header {
+    background-color: #124578;
+  }
+</style>
+```
 
 ---
 
@@ -65,7 +74,8 @@ Este modo **encapsula** el chatbot dentro de un iframe, aislándolo completament
 **Recomendado para:**
 - Sitios con frameworks modernos (Vue, React, Angular, etc.)
 - Casos donde no se quiere modificar el DOM directamente
-> ⚠️ **Consideración técnica importante**:  
+  
+> ⚠️ **Consideración técnica importante**:
 > Estamos implementando una mejora en el espacio que utiliza el iframe, estaremos infomrado del ajuste en los siguientes dias.
 
 ---
